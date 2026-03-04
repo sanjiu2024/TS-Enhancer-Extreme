@@ -15,14 +15,14 @@
 #
 
 cd ${0%/*}
-source "./lib/util_functions.sh"
+source "./script/util_functions.sh"
 $TSEEBIN/tseed --rootdetect
 check
 
 invoke "移除冲突模块" "--conflictmodcheck"
 [ -f "$SD/$D" ] || {
-  logp "复制状态检测脚本到自启文件夹"
+  logp "I" "复制状态检测脚本到自启文件夹"
   mkdir -p "$SD"
-  cp -f "$TSEEMODDIR/lib/state.sh" "$SD/$D"
+  cp -f "$TSEEMODDIR/sh/state.sh" "$SD/$D"
   chmod +x "$SD/$D"
 }
